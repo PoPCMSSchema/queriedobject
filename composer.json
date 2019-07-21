@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GetPoP\\QueriedObject\\": "src"
+            "PoP\\QueriedObject\\": "src"
         },
         "files": [
             "initialize.php"
@@ -35,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GetPoP\\QueriedObject\\": "tests"
+            "PoP\\QueriedObject\\": "tests"
         }
     },
     "scripts": {
