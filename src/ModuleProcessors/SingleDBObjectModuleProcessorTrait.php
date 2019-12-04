@@ -1,7 +1,7 @@
 <?php
 namespace PoP\QueriedObject\ModuleProcessors;
 
-trait SingleModuleProcessorTrait
+trait SingleDBObjectModuleProcessorTrait
 {
     public function getDBObjectIDOrIDs($data_properties)
     {
