@@ -1,7 +1,7 @@
 <?php
 namespace PoP\QueriedObject\ModuleProcessors;
 
-trait SingleDBObjectModuleProcessorTrait
+trait QueriedDBObjectModuleProcessorTrait
 {
     protected function getSingleDBObjectID(array $module, array &$props, &$data_properties)
     {
