@@ -20,12 +20,13 @@ Via Composer
 composer require getpop/queriedobject
 ```
 
-<!--
 ## Usage
 
+Initialize the component:
+
 ``` php
+\PoP\QueriedObject\Component::initialize();
 ```
--->
 
 ## Standards
 
