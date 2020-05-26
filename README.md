@@ -25,7 +25,9 @@ composer require getpop/queriedobject
 Initialize the component:
 
 ``` php
-\PoP\QueriedObject\Component::initialize();
+\PoP\Root\ComponentLoader::initializeComponents([
+    \PoP\QueriedObject\Component::class,
+]);
 ```
 
 ## Standards
