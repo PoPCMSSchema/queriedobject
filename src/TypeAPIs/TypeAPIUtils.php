@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PoP\QueriedObject\TypeAPIs;
 
-use PoP\ComponentModel\Feedback\Tokens;
-use PoP\ComponentModel\Facades\Schema\FeedbackMessageStoreFacade;
-use PoP\Translation\Facades\TranslationAPIFacade;
+// use PoP\ComponentModel\Feedback\Tokens;
+// use PoP\ComponentModel\Facades\Schema\FeedbackMessageStoreFacade;
+// use PoP\Translation\Facades\TranslationAPIFacade;
 
 class TypeAPIUtils
 {
@@ -16,31 +16,42 @@ class TypeAPIUtils
      *
      * @param integer|null $limit
      * @param integer|null $maxLimit
-     * @param boolean $addSchemaWarning
      * @return integer|null
      */
     public static function getLimitOrMaxLimit(
         ?int $limit,
-        ?int $maxLimit,
-        bool $addSchemaWarning = true
+        ?int $maxLimit/*,
+        bool $addSchemaWarning = true*/
     ): ?int {
         // -1 means "unlimited"
         if (!is_null($maxLimit) && $maxLimit != -1 && ($limit == -1 || $limit > $maxLimit)) {
+            // Commented adding the schema warning because it doesn't work in nested queries
+            // Eg: "posts" under the author has max limit of 5, the warning is added successfully,
+            // but it doesn't show in the response (I didn't check out why)
+            // query MyQuery {
+            //     users {
+            //       posts(limit:8) {
+            //         title
+            //       }
+            //     }
+            //   }
+            // }
+
             // Add a warning in the query response
-            if ($addSchemaWarning) {
-                $translationAPI = TranslationAPIFacade::getInstance();
-                $schemaWarnings = [];
-                $schemaWarnings[] = [
-                    // Tokens::PATH => [$typeField],
-                    Tokens::MESSAGE => sprintf(
-                        $translationAPI->__('Using max limit of \'%s\' instead of requested limit of \'%s\'', 'posts'),
-                        $maxLimit,
-                        $limit
-                    ),
-                ];
-                $feedbackMessageStore = FeedbackMessageStoreFacade::getInstance();
-                $feedbackMessageStore->addSchemaWarnings($schemaWarnings);
-            }
+            // if ($addSchemaWarning) {
+            //     $translationAPI = TranslationAPIFacade::getInstance();
+            //     $schemaWarnings = [];
+            //     $schemaWarnings[] = [
+            //         // Tokens::PATH => [$typeField],
+            //         Tokens::MESSAGE => sprintf(
+            //             $translationAPI->__('Using max limit of \'%s\' instead of requested limit of \'%s\'', 'posts'),
+            //             $maxLimit,
+            //             $limit
+            //         ),
+            //     ];
+            //     $feedbackMessageStore = FeedbackMessageStoreFacade::getInstance();
+            //     $feedbackMessageStore->addSchemaWarnings($schemaWarnings);
+            // }
             $limit = $maxLimit;
         }
         return $limit;
