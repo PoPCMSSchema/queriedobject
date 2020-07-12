@@ -11,7 +11,7 @@ use PoP\ComponentModel\FieldInterfaceResolvers\AbstractSchemaFieldInterfaceResol
 
 class QueryableObjectFieldInterfaceResolver extends AbstractSchemaFieldInterfaceResolver
 {
-    public const NAME = 'QueryableObject';
+    public const NAME = 'Queryable';
 
     public function getInterfaceName(): string
     {
