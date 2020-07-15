@@ -12,7 +12,6 @@ class TypeAPIUtils
 {
     /**
      * Return the minimum number from between the request limit and the max limit.
-     * If the max limit is breached, allow to add a warning to the response
      *
      * @param integer|null $limit
      * @param integer|null $maxLimit
@@ -23,8 +22,8 @@ class TypeAPIUtils
         ?int $maxLimit/*,
         bool $addSchemaWarning = true*/
     ): ?int {
-        // -1 means "unlimited"
-        if (!is_null($maxLimit) && $maxLimit != -1 && ($limit == -1 || $limit > $maxLimit)) {
+        // $limit with values -1 or 0 could mean "unlimited"
+        if (!is_null($maxLimit) && $maxLimit != -1 && ($limit <= 0 || $limit > $maxLimit)) {
             // Commented adding the schema warning because it doesn't work in nested queries
             // Eg: "posts" under the author has max limit of 5, the warning is added successfully,
             // but it doesn't show in the response (I didn't check out why)
