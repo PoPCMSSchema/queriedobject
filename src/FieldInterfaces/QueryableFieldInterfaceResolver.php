@@ -9,7 +9,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldInterfaceResolvers\AbstractSchemaFieldInterfaceResolver;
 
-class QueryableObjectFieldInterfaceResolver extends AbstractSchemaFieldInterfaceResolver
+class QueryableFieldInterfaceResolver extends AbstractSchemaFieldInterfaceResolver
 {
     public const NAME = 'Queryable';
 
