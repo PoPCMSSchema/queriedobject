@@ -6,7 +6,6 @@ namespace PoP\QueriedObject\FieldInterfaces;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldInterfaceResolvers\AbstractSchemaFieldInterfaceResolver;
 
 class QueryableFieldInterfaceResolver extends AbstractSchemaFieldInterfaceResolver
@@ -32,22 +31,22 @@ class QueryableFieldInterfaceResolver extends AbstractSchemaFieldInterfaceResolv
         ];
     }
 
-    public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    public function getSchemaFieldType(string $fieldName): ?string
     {
         $types = [
             'url' => SchemaDefinition::TYPE_URL,
             'slug' => SchemaDefinition::TYPE_STRING,
         ];
-        return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+        return $types[$fieldName] ?? parent::getSchemaFieldType($fieldName);
     }
 
-    public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    public function getSchemaFieldDescription(string $fieldName): ?string
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'url' => $translationAPI->__('URL to query the object', 'queriedobject'),
             'slug' => $translationAPI->__('URL\'s slug', 'queriedobject'),
         ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
+        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($fieldName);
     }
 }
