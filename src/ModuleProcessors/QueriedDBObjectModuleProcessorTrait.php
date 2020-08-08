@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\QueriedObject\ModuleProcessors;
+namespace PoPSchema\QueriedObject\ModuleProcessors;
 
 use PoP\ComponentModel\State\ApplicationState;
 

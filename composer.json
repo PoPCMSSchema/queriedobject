@@ -1,12 +1,12 @@
 {
-    "name": "getpop/queriedobject",
+    "name": "pop-schema/queriedobject",
     "type": "library",
     "description": "Adds support to query single objects (users, posts, etc) in the request",
     "keywords": [
         "PoP",
         "queriedobject"
     ],
-    "homepage": "https://github.com/getpop/queriedobject",
+    "homepage": "https://github.com/pop-schema/queriedobject",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
     "require": {
         "php": "~7.2",
         "getpop/engine": "dev-master",
-        "getpop/migrate-queriedobject": "dev-master"
+        "pop-schema/migrate-queriedobject": "dev-master"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12",
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PoP\\QueriedObject\\": "src"
+            "PoPSchema\\QueriedObject\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\QueriedObject\\": "tests"
+            "PoPSchema\\QueriedObject\\": "tests"
         }
     },
     "scripts": {

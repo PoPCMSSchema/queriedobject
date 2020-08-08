@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\QueriedObject\FieldInterfaceResolvers;
+namespace PoPSchema\QueriedObject\FieldInterfaceResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;

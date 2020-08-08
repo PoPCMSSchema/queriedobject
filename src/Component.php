@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\QueriedObject;
+namespace PoPSchema\QueriedObject;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;

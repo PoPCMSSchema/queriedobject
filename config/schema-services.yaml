@@ -1,4 +1,4 @@
 services:
-    PoP\QueriedObject\FieldInterfaceResolvers\:
+    PoPSchema\QueriedObject\FieldInterfaceResolvers\:
         resource: '../src/FieldInterfaceResolvers/*'
         public: true

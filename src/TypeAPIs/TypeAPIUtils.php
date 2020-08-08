@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\QueriedObject\TypeAPIs;
+namespace PoPSchema\QueriedObject\TypeAPIs;
 
 // use PoP\ComponentModel\Feedback\Tokens;
 // use PoP\ComponentModel\Facades\Schema\FeedbackMessageStoreFacade;
