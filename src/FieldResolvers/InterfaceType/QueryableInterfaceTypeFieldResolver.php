@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace PoPSchema\QueriedObject\FieldResolvers\InterfaceType;
 
-use Symfony\Contracts\Service\Attribute\Required;
 use PoP\ComponentModel\FieldResolvers\InterfaceType\AbstractInterfaceTypeFieldResolver;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\ConcreteTypeResolverInterface;
 use PoP\Engine\TypeResolvers\ScalarType\StringScalarTypeResolver;
 use PoPSchema\QueriedObject\TypeResolvers\InterfaceType\QueryableInterfaceTypeResolver;
 use PoPSchema\SchemaCommons\TypeResolvers\ScalarType\URLScalarTypeResolver;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class QueryableInterfaceTypeFieldResolver extends AbstractInterfaceTypeFieldResolver
 {
@@ -44,12 +44,12 @@ class QueryableInterfaceTypeFieldResolver extends AbstractInterfaceTypeFieldReso
 
     public function getFieldTypeResolver(string $fieldName): ConcreteTypeResolverInterface
     {
-        $types = [
+        return match ($fieldName) {
             'url' => $this->urlScalarTypeResolver,
             'urlPath' => $this->stringScalarTypeResolver,
             'slug' => $this->stringScalarTypeResolver,
-        ];
-        return $types[$fieldName] ?? parent::getFieldTypeResolver($fieldName);
+            default => parent::getFieldTypeResolver($fieldName),
+        };
     }
 
     public function getSchemaFieldTypeModifiers(string $fieldName): ?int
@@ -66,11 +66,11 @@ class QueryableInterfaceTypeFieldResolver extends AbstractInterfaceTypeFieldReso
 
     public function getSchemaFieldDescription(string $fieldName): ?string
     {
-        $descriptions = [
+        return match ($fieldName) {
             'url' => $this->translationAPI->__('URL to query the object', 'queriedobject'),
             'urlPath' => $this->translationAPI->__('URL path to query the object', 'queriedobject'),
             'slug' => $this->translationAPI->__('URL\'s slug', 'queriedobject'),
-        ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($fieldName);
+            default => parent::getSchemaFieldDescription($fieldName),
+        };
     }
 }
